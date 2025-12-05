@@ -5,8 +5,8 @@ class Navbar extends HTMLElement {
         this.attachShadow({ mode: 'open' });
 
         this.shadowRoot.innerHTML = /*html*/`
-            <link rel="stylesheet" href="reset.css"/>
-            <link rel="stylesheet" href="global.css"/>
+            <link rel="stylesheet" href="styles/reset.css"/>
+            <link rel="stylesheet" href="styles/global.css"/>
 
             <style>
                 .navbar {

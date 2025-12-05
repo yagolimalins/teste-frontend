@@ -47,6 +47,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a:visited {
-  color: inherit; 
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
 }
