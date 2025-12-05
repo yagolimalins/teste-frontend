@@ -13,7 +13,6 @@ class Navbar extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    width: 250px;
                     padding: 0px 40px;
                     min-height: 100vh;
                     background-color: white;
@@ -44,6 +43,10 @@ class Navbar extends HTMLElement {
 
                 .hovered {
                     color: var(--brand-color)
+                }
+
+                p {
+                    white-space: nowrap;
                 }
             </style>
 
@@ -222,7 +225,6 @@ class Navbar extends HTMLElement {
                         </a>
                     </li>
                 </ul>
-
             </nav>
         `;
     }

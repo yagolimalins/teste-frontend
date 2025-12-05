@@ -35,7 +35,8 @@ class Header extends HTMLElement {
                     color: white;
                     background-color: var(--brand-color);
                     padding: 6px 16px;
-                    border-radius: 20px
+                    border-radius: 20px;
+                    cursor: pointer;
                 }
 
                 .avatar {
@@ -52,6 +53,9 @@ class Header extends HTMLElement {
                     color: var(--lighter-font)
                 }
 
+                a {
+                    cursor: pointer;
+                }
 
             </style>
 

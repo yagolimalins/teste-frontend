@@ -19,14 +19,21 @@ class Template extends HTMLElement {
                     width: 100%;
                 }
 
+                .body {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 25px 100px;
+                }
             </style>
 
             <div class="template">
                 <my-navbar></my-navbar>
                 <div class="main">
                     <my-header></my-header>
-                    <div class="content">
-                        <slot></slot>
+                    <div class="body">
+                        <slot name="breadcrumb" class="breadcrumb"></slot>
+                        <slot name="title" class="title"></slot>
+                        <slot name="content" class="content"></slot>
                     </div>
                 </div>
             </div>
