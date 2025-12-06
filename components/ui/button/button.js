@@ -5,37 +5,76 @@ class Button extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ["label", "color"];
-    }
-
-    attributeChangedCallback() {
-        this.render();
+        return ["label", "color", "variant"];
     }
 
     connectedCallback() {
         this.render();
     }
 
-    render() {
-        const label = this.getAttribute("label") || "Button";
-        const color = this.getAttribute("color") || "var(--brand-color)";
+    attributeChangedCallback() {
+        this.render();
+    }
 
-        this.shadowRoot.innerHTML = /*html*/`
+
+    get label() {
+        return this.getAttribute("label") || "Button";
+    }
+
+    get variant() {
+        return this.getAttribute("variant") || "primary";
+    }
+
+    get customColor() {
+        return this.getAttribute("color");
+    }
+
+    get theme() {
+        return {
+            brand: "var(--brand-color)",
+            darkerFont: "var(--darker-font)",
+            inputBorder: "var(--input-border)"
+        };
+    }
+
+    getVariantStyles() {
+        const { brand, darkerFont, inputBorder } = this.theme;
+
+        return {
+            primary: `
+                background: ${this.customColor || brand};
+                color: white;
+                border: none;
+            `,
+            secondary: `
+                background: transparent;
+                color: ${darkerFont};
+                border: 1px solid ${inputBorder};
+            `
+        };
+    }
+
+    render() {
+        const variantStyles = this.getVariantStyles()[this.variant];
+
+        this.shadowRoot.innerHTML = `
             <style>
                 button {
                     padding: 12px 20px;
-                    border: none;
                     border-radius: 8px;
                     cursor: pointer;
-                    background: ${color};
-                    color: #fff;
                     font-size: 14px;
                     font-weight: 500;
-                    transition: opacity .2s;
+                    transition: opacity .2s, background .2s, color .2s;
+                    ${variantStyles}
+                }
+
+                button:hover {
+                    opacity: 0.85;
                 }
             </style>
 
-            <button>${label}</button>
+            <button>${this.label}</button>
         `;
     }
 }
