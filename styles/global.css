@@ -14,6 +14,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    max-width: 1600px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--border-color);
     margin: auto;
     background-color: var(--background-color);
 
@@ -44,5 +48,5 @@ select {
 }
 
 a:hover {
-	color: var(--brand-color)
+    color: var(--brand-color)
 }

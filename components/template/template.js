@@ -1,8 +1,12 @@
 class Template extends HTMLElement {
     constructor() {
         super();
-
         this.attachShadow({ mode: 'open' });
+        this.render();
+    }
+
+    render() {
+        const year = new Date().getFullYear();
 
         this.shadowRoot.innerHTML = /*html*/`
             <link rel="stylesheet" href="styles/reset.css"/>
@@ -12,7 +16,7 @@ class Template extends HTMLElement {
                 .template {
                     display: flex;
                 }
-                
+
                 .main {
                     display: flex;
                     flex-direction: column;
@@ -48,6 +52,23 @@ class Template extends HTMLElement {
                     justify-content: flex-end;
                 }
 
+                footer {
+                    text-align: center;
+                    color: var(--lighter-font);
+                    margin-top: auto;
+                    padding: 30px;
+                }
+
+                footer a {
+                    color: var(--brand-color);
+                    text-decoration: none;
+                    margin: 0 5px;
+                }
+
+                footer a.highlight {
+                    text-decoration: underline;
+                }
+
                 @media (max-width: 700px) {
                     .body {
                         padding: 25px 20px;
@@ -72,16 +93,12 @@ class Template extends HTMLElement {
                     <my-header></my-header>
 
                     <div class="body">
-
                         <div class="header-block">
-
                             <slot name="breadcrumb"></slot>
-
                             <div class="title-actions-row">
                                 <div class="title-slot">
                                     <slot name="title"></slot>
                                 </div>
-
                                 <slot name="header-action"></slot>
                             </div>
                         </div>
@@ -91,8 +108,12 @@ class Template extends HTMLElement {
                         <div class="footer-action-row">
                             <slot name="footer-action"></slot>
                         </div>
-
                     </div>
+
+                    <footer>
+                        Desenvolvido por <a href="#" class="highlight">Doity Plataforma de Eventos</a> - ${year} - Todos os direitos reservados - 
+                        <a href="#">Central de Ajuda</a> - <a href="#">Entre em Contato</a>
+                    </footer>
                 </div>
             </div>
         `;
