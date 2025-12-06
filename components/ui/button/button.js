@@ -47,7 +47,7 @@ class Button extends HTMLElement {
                 border: none;
             `,
             secondary: `
-                background: transparent;
+                background: var(--button-secondary);
                 color: ${darkerFont};
                 border: 1px solid ${inputBorder};
             `

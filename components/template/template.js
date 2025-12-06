@@ -22,22 +22,80 @@ class Template extends HTMLElement {
                 .body {
                     display: flex;
                     flex-direction: column;
-                    padding: 25px 100px;
+                    padding: 20px 100px;
+                    gap: 20px;
+                }
+
+                .header-block {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .title-actions-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 20px;
+                }
+
+                .title-slot {
+                    flex: 1;
+                }
+
+                .footer-action-row {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                @media (max-width: 700px) {
+                    .body {
+                        padding: 25px 20px;
+                    }
+
+                    .title-actions-row {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 10px;
+                    }
+
+                    .footer-action-row {
+                        justify-content: flex-start;
+                    }
                 }
             </style>
 
             <div class="template">
                 <my-navbar></my-navbar>
+
                 <div class="main">
                     <my-header></my-header>
+
                     <div class="body">
-                        <slot name="breadcrumb" class="breadcrumb"></slot>
-                        <slot name="title" class="title"></slot>
-                        <slot name="content" class="content"></slot>
+
+                        <div class="header-block">
+
+                            <slot name="breadcrumb"></slot>
+
+                            <div class="title-actions-row">
+                                <div class="title-slot">
+                                    <slot name="title"></slot>
+                                </div>
+
+                                <slot name="header-action"></slot>
+                            </div>
+                        </div>
+
+                        <slot name="content"></slot>
+
+                        <div class="footer-action-row">
+                            <slot name="footer-action"></slot>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        `
+        `;
     }
 }
 

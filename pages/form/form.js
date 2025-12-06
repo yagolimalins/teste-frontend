@@ -32,14 +32,14 @@ class Form extends HTMLElement {
     }
 
     get buttons() {
-        return this.mode === "edit"
-            ? `
+        if (this.mode === "edit") {
+            return `
                 <my-button label="Cancelar" variant="secondary"></my-button>
                 <my-button label="Enviar" variant="primary"></my-button>
-            `
-            : `
-                <my-button label="Cadastrar" variant="primary"></my-button>
             `;
+        }
+
+        return `<my-button label="Cadastrar" variant="primary"></my-button>`;
     }
 
     get buttonsClass() {
@@ -51,7 +51,6 @@ class Form extends HTMLElement {
             <style>
                 .title {
                     font-size: var(--title-size);
-                    margin-bottom: 20px;
                 }
 
                 .content {
@@ -68,6 +67,11 @@ class Form extends HTMLElement {
                     gap: 20px;
                 }
 
+                .field {
+                    display: flex;
+                    flex-direction: column;
+                }
+
                 label {
                     font-weight: 500;
                     font-size: 12px;
@@ -75,15 +79,14 @@ class Form extends HTMLElement {
                 }
 
                 span {
-                    color: var(--brand-color)
+                    color: var(--brand-color);
                 }
 
                 input,
                 textarea {
                     padding: 10px 15px;
                     border-radius: 8px;
-                    border-style: solid;
-                    border-color: var(--input-border);
+                    border: 1px solid var(--input-border);
                 }
 
                 input:focus,
@@ -96,22 +99,15 @@ class Form extends HTMLElement {
                     resize: none;
                 }
 
-                .field {
-                    display: flex;
-                    flex-direction: column;
-                }
-
                 .check {
                     display: flex;
-                    flex-direction: row;
                     align-items: center;
                     gap: 10px;
-                    margin: 10px 0px;
+                    margin: 10px 0;
                 }
 
                 .radio-group {
                     display: flex;
-                    flex-direction: row;
                     gap: 20px;
                     margin-top: 10px;
                     flex-wrap: wrap;
@@ -127,9 +123,9 @@ class Form extends HTMLElement {
                 input[type="radio"] {
                     width: 16px;
                     height: 16px;
-                    accent-color: var(--brand-color);
                     margin: 0;
                     padding: 0;
+                    accent-color: var(--brand-color);
                 }
 
                 .check label,
@@ -153,8 +149,7 @@ class Form extends HTMLElement {
                     width: 100%;
                     border: none;
                     border-top: 1px solid var(--border-color);
-                    margin: 1rem 0;
-                    margin-bottom: 10px;
+                    margin: 10px 0;
                 }
 
                 .buttons {
@@ -177,7 +172,7 @@ class Form extends HTMLElement {
         return /*html*/`
             <div class="field">
                 <label for="name">Nome<span>*</span></label>
-                <input type="text" name="name" id="name">
+                <input type="text" id="name" name="name">
             </div>
 
             <div class="field">
@@ -217,7 +212,7 @@ class Form extends HTMLElement {
     }
 
     get buttonsSection() {
-        return `
+        return /*html*/`
             <div class="${this.buttonsClass}">
                 ${this.buttons}
             </div>
@@ -228,13 +223,11 @@ class Form extends HTMLElement {
         return /*html*/`
             <link rel="stylesheet" href="styles/reset.css"/>
             <link rel="stylesheet" href="styles/global.css"/>
-
             ${this.styles}
 
             <my-template>
                 <my-breadcrumb slot="breadcrumb" paths='["Painel", "Pesquisa de Satisfação"]'></my-breadcrumb>
                 <h1 slot="title" class="title">${this.title}</h1>
-
                 <div slot="content" class="content">
                     <form class="form">
                         ${this.formFields}
@@ -251,7 +244,6 @@ class Form extends HTMLElement {
 
     setupDateInputs() {
         const dateInputs = this.shadowRoot.querySelectorAll(".date-input");
-
         dateInputs.forEach(input => {
             input.addEventListener("focus", () => input.type = "date");
             input.addEventListener("blur", () => {

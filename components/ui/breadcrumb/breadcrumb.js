@@ -12,7 +12,6 @@ class Breadcrumb extends HTMLElement {
         nav {
           display: flex;
           align-items: center;
-          margin-bottom: 10px;
           gap: 12px;
         }
 

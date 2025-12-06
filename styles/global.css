@@ -4,7 +4,9 @@
     --lighter-font: #5A5A5A;
     --darker-font: #18181B;
     --input-border: #D5D7DA;
-    --button-secondary: #CDD1D9;
+    --button-secondary: #F9FAFB;
+    --background-color: #F6F6F6;
+    --separator-color: #D3D3D3;
     --title-size: 24px;
 }
 
@@ -13,7 +15,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: auto;
-    background-color: #F6F6F6;
+    background-color: var(--background-color);
 
 }
 
