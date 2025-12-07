@@ -88,7 +88,7 @@ class Survey extends HTMLElement {
                     gap: 30px;
                 }
 
-                .card {
+                .head {
                     background: var(--background-color);
                     padding: 20px;
                     border-radius: 12px;
@@ -97,7 +97,7 @@ class Survey extends HTMLElement {
                     gap: 20px;
                 }
 
-                .card-title {
+                .head-title {
                     font-size: 16px;
                     font-weight: 600;
                     color: var(--darker-font);
@@ -320,8 +320,8 @@ class Survey extends HTMLElement {
 
                 <div slot="content" class="content">
 
-                    <div class="card">
-                        <div class="card-title">Nome da pesquisa</div>
+                    <div class="head">
+                        <div class="head-title">Nome da pesquisa</div>
                         <div class="info-row">
                             <div class="left-group">
                                 <div class="info-block">

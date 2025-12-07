@@ -8,6 +8,13 @@
     --background-color: #F6F6F6;
     --separator-color: #D3D3D3;
     --title-size: 24px;
+
+    --progress-green: #66BB33;
+    --progress-yellow: #DFAD40;
+    --progress-olive: #C5C772;
+    --progress-pink: #E66699;
+    --progress-red: #FF2B34;
+
 }
 
 body {
