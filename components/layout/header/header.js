@@ -57,6 +57,12 @@ class Header extends HTMLElement {
                     cursor: pointer;
                 }
 
+                @media screen and (max-width: 1000px) {
+                    .header {
+                        display: none;
+                    }
+                }
+
             </style>
 
             <header class="header">

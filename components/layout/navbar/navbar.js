@@ -13,22 +13,25 @@ class Navbar extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    padding: 0px 40px;
-                    min-height: 100vh;
+                    min-height: 100%;
                     background-color: white;
+                    border-style: solid;
+                    border-width: 0px 2px 0px 0px;
+                    border-color: var(--border-color);
                     gap: 60px;
                 }
 
                 .logo {
-                    margin-top: 40px;
+                    padding: 25px 0px;
                     width: 90px;
                 }
 
                 .menu {
                     display: flex;
                     flex-direction: column;
-                    gap: 20px;
+                    padding: 0px 40px;
                     margin-bottom: 40px;
+                    gap: 20px;
                 }
 
                 .link {
@@ -47,6 +50,18 @@ class Navbar extends HTMLElement {
 
                 p {
                     white-space: nowrap;
+                }
+
+                @media (max-width: 1000px) {
+                    .navbar {
+                        width: 100%;
+                        border-width: 2px 0px 2px 0px;
+                        min-height: auto;
+                    }
+
+                    .menu {
+                        display: none;
+                    }
                 }
             </style>
 

@@ -136,22 +136,13 @@ class Card extends HTMLElement {
                     font-weight: bold;
                 }
 
-                @media (max-width: 700px) {
-                    .top-row {
-                        flex-direction: column;
-                        gap: 12px;
-                    }
-
+                @media (max-width: 1000px) {
                     .right {
                         align-items: flex-start;
                     }
 
-                    .results-grid {
-                        grid-template-columns: 1fr;
-                    }
-
                     .row-label {
-                        justify-content: flex-start;
+                        justify-content: flex-end;
                     }
                 }
             </style>

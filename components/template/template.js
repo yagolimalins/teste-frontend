@@ -15,6 +15,7 @@ class Template extends HTMLElement {
             <style>
                 .template {
                     display: flex;
+                    min-height: 100vh;
                 }
 
                 .main {
@@ -55,21 +56,29 @@ class Template extends HTMLElement {
                 footer {
                     text-align: center;
                     color: var(--lighter-font);
+                    line-height: 20px;
                     margin-top: auto;
-                    padding: 30px;
+                    margin-bottom: 40px;
                 }
 
                 footer a {
                     color: var(--brand-color);
                     text-decoration: none;
-                    margin: 0 5px;
                 }
 
                 footer a.highlight {
                     text-decoration: underline;
                 }
 
-                @media (max-width: 700px) {
+                .br {
+                        display: none;
+                }
+
+                @media (max-width: 1000px) {
+                    .template {
+                        flex-direction: column;
+                    }
+
                     .body {
                         padding: 25px 20px;
                     }
@@ -82,6 +91,10 @@ class Template extends HTMLElement {
 
                     .footer-action-row {
                         justify-content: flex-start;
+                    }
+
+                    .br {
+                        display: block;
                     }
                 }
             </style>
@@ -111,7 +124,8 @@ class Template extends HTMLElement {
                     </div>
 
                     <footer>
-                        Desenvolvido por <a href="#" class="highlight">Doity Plataforma de Eventos</a> - ${year} - Todos os direitos reservados - 
+                        Desenvolvido por <a href="#" class="highlight">Doity Plataforma de Eventos</a> - ${year} <br class="br"> 
+                        - Todos os direitos reservados - <br class="br">
                         <a href="#">Central de Ajuda</a> - <a href="#">Entre em Contato</a>
                     </footer>
                 </div>

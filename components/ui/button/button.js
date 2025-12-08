@@ -57,8 +57,23 @@ class Button extends HTMLElement {
     render() {
         const variantStyles = this.getVariantStyles()[this.variant];
 
-        this.shadowRoot.innerHTML = `
+        this.shadowRoot.innerHTML = /*html*/`
             <style>
+                :host {
+                    display: inline-block;
+                }
+
+                @media (max-width: 1000px) {
+                    :host {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    button {
+                        width: 100%;
+                    }
+                }
+
                 button {
                     padding: 12px 20px;
                     border-radius: 8px;
@@ -73,6 +88,7 @@ class Button extends HTMLElement {
                     opacity: 0.85;
                 }
             </style>
+
 
             <button>${this.label}</button>
         `;

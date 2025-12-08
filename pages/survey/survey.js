@@ -9,6 +9,7 @@ class Survey extends HTMLElement {
             { text: "Que nota você daria para a organização?", required: false }
         ];
         this.editIndex = null;
+        this.editingQuestion = null;
     }
 
     connectedCallback() {
@@ -27,9 +28,9 @@ class Survey extends HTMLElement {
 
         if (input) {
             input.focus();
-            if (editIndex !== null) {
-                input.value = this.questions[editIndex].text;
-                checkbox.checked = this.questions[editIndex].required;
+            if (editIndex !== null && this.editingQuestion) {
+                input.value = this.editingQuestion.text;
+                checkbox.checked = this.editingQuestion.required;
             } else {
                 input.value = "";
                 checkbox.checked = false;
@@ -50,8 +51,9 @@ class Survey extends HTMLElement {
         if (!text) return;
 
         if (this.editIndex !== null) {
-            this.questions[this.editIndex] = { text, required };
+            this.questions.splice(this.editIndex, 0, { text, required });
             this.editIndex = null;
+            this.editingQuestion = null;
         } else {
             this.questions.push({ text, required });
         }
@@ -65,6 +67,8 @@ class Survey extends HTMLElement {
     }
 
     editQuestion(index) {
+        this.editingQuestion = this.questions.splice(index, 1)[0];
+        this.editIndex = index;
         this.toggleQuestionInput(true, index);
     }
 
@@ -274,19 +278,31 @@ class Survey extends HTMLElement {
                     margin-left: 2px;
                 }
 
-                @media (max-width: 700px) {
+                @media (max-width: 1000px) {
                     .info-row {
                         flex-direction: column;
                         align-items: flex-start;
+                        width: 100%;
+                        gap: 20px;
+                    }
+
+                    .left-group {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        width: 100%;
+                        gap: 20px;
+                    }
+
+                    .separator {
+                        width: 100%;
+                        height: 1px;
+                        background-color: var(--separator-color);
+                        display: block;
                     }
 
                     .actions {
                         width: 100%;
                         justify-content: flex-start;
-                    }
-
-                    .separator {
-                        display: none;
                     }
 
                     .content {
@@ -298,6 +314,10 @@ class Survey extends HTMLElement {
                         flex-direction: column;
                         gap: 10px;
                         align-items: stretch;
+                    }
+
+                    .header-action {
+                        display: none;
                     }
                 }
             </style>
@@ -314,7 +334,7 @@ class Survey extends HTMLElement {
                 <my-breadcrumb slot="breadcrumb" paths='["Painel", "Pesquisa de Satisfação"]'></my-breadcrumb>
                 <h1 slot="title" class="title">Pesquisa de Satisfação</h1>
 
-                <div slot="header-action">
+                <div class="header-action" slot="header-action">
                     <my-button label="Resultados da Pesquisa" variant="secondary"></my-button>
                 </div>
 
@@ -338,7 +358,6 @@ class Survey extends HTMLElement {
                                     <span class="status-dot"></span>Disponível
                                 </div>
                             </div>
-
                             <div class="actions">
                                 <my-button label="Editar" variant="secondary"></my-button>
                                 <my-button label="Pré-visualizar" variant="secondary"></my-button>
@@ -365,7 +384,7 @@ class Survey extends HTMLElement {
                                             </div>
                                         </td>
                                     </tr>
-                                `).join('')}
+                                `).join("")}
                             </tbody>
                         </table>
                     </div>
@@ -382,11 +401,13 @@ class Survey extends HTMLElement {
                                 <div class="separator-line"></div>
                                 <div class="question-buttons">
                                     <my-button label="Cancelar" variant="secondary" id="cancel-add-question"></my-button>
-                                    <my-button label="Adicionar" variant="primary" id="save-question-btn"></my-button>
+                                    <my-button label="Salvar" variant="primary" id="save-question-btn"></my-button>
                                 </div>
                             </div>
-                        ` : `<my-button id="add-question-btn" label="Adicionar pergunta" variant="secondary"></my-button>`
+                        `
+                        : `<my-button id="add-question-btn" label="Adicionar pergunta" variant="secondary"></my-button>`
                     }
+
                 </div>
 
                 ${!this.showQuestionInput
@@ -401,7 +422,14 @@ class Survey extends HTMLElement {
         this.shadowRoot.innerHTML = this.template;
 
         this.shadowRoot.querySelector("#add-question-btn")?.addEventListener("click", () => this.toggleQuestionInput(true));
-        this.shadowRoot.querySelector("#cancel-add-question")?.addEventListener("click", () => this.toggleQuestionInput(false));
+        this.shadowRoot.querySelector("#cancel-add-question")?.addEventListener("click", () => {
+            if (this.editIndex !== null && this.editingQuestion) {
+                this.questions.splice(this.editIndex, 0, this.editingQuestion);
+                this.editIndex = null;
+                this.editingQuestion = null;
+            }
+            this.toggleQuestionInput(false);
+        });
         this.shadowRoot.querySelector("#save-question-btn")?.addEventListener("click", () => this.addQuestion());
 
         this.shadowRoot.querySelectorAll(".row-actions span[data-edit]").forEach(el =>
