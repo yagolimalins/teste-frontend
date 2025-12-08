@@ -234,7 +234,7 @@ class Form extends HTMLElement {
             <my-template>
                 <my-breadcrumb slot="breadcrumb" paths='["Painel", "Pesquisa de Satisfação"]'></my-breadcrumb>
                 <h1 slot="title" class="title">${this.title}</h1>
-                <div slot="content" class="content">
+                <div slot="content-1" class="content">
                     <form class="form">
                         ${this.formFields}
                         ${this.buttonsSection}

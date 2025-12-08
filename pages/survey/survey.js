@@ -338,7 +338,7 @@ class Survey extends HTMLElement {
                     <my-button label="Resultados da Pesquisa" variant="secondary"></my-button>
                 </div>
 
-                <div slot="content" class="content">
+                <div slot="content-1" class="content">
 
                     <div class="head">
                         <div class="head-title">Nome da pesquisa</div>

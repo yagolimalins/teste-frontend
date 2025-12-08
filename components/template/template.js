@@ -6,8 +6,6 @@ class Template extends HTMLElement {
     }
 
     render() {
-        const year = new Date().getFullYear();
-
         this.shadowRoot.innerHTML = /*html*/`
             <link rel="stylesheet" href="styles/reset.css"/>
             <link rel="stylesheet" href="styles/global.css"/>
@@ -21,6 +19,7 @@ class Template extends HTMLElement {
                 .main {
                     display: flex;
                     flex-direction: column;
+                    min-height: 100vh;
                     width: 100%;
                 }
 
@@ -29,6 +28,7 @@ class Template extends HTMLElement {
                     flex-direction: column;
                     padding: 20px 100px;
                     gap: 20px;
+                    flex: 1;
                 }
 
                 .header-block {
@@ -53,34 +53,14 @@ class Template extends HTMLElement {
                     justify-content: space-between;
                 }
 
-                footer {
-                    text-align: center;
-                    color: var(--lighter-font);
-                    line-height: 20px;
-                    margin-top: auto;
-                    margin-bottom: 40px;
-                }
-
-                footer a {
-                    color: var(--brand-color);
-                    text-decoration: none;
-                }
-
-                footer a.highlight {
-                    text-decoration: underline;
-                }
-
-                .br {
-                        display: none;
-                }
-
                 @media (max-width: 1000px) {
                     .template {
                         flex-direction: column;
                     }
 
                     .body {
-                        padding: 25px 20px;
+                        padding: 25px 15px;
+                        flex: 0;
                     }
 
                     .title-actions-row {
@@ -91,10 +71,6 @@ class Template extends HTMLElement {
 
                     .footer-action-row {
                         justify-content: flex-start;
-                    }
-
-                    .br {
-                        display: block;
                     }
                 }
             </style>
@@ -116,7 +92,7 @@ class Template extends HTMLElement {
                             </div>
                         </div>
 
-                        <slot name="content"></slot>
+                        <slot name="content-1"></slot>
 
                         <slot name="content-2"></slot>
 
@@ -126,11 +102,7 @@ class Template extends HTMLElement {
                         </div>
                     </div>
 
-                    <footer>
-                        Desenvolvido por <a href="#" class="highlight">Doity Plataforma de Eventos</a> - ${year} <br class="br"> 
-                        - Todos os direitos reservados - <br class="br">
-                        <a href="#">Central de Ajuda</a> - <a href="#">Entre em Contato</a>
-                    </footer>
+                    <my-footer></my-footer>
                 </div>
             </div>
         `;

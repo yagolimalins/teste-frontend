@@ -18,7 +18,7 @@ class Navbar extends HTMLElement {
                     border-style: solid;
                     border-width: 0px 2px 0px 0px;
                     border-color: var(--border-color);
-                    gap: 60px;
+                    gap: 38px;
                 }
 
                 .logo {
@@ -30,7 +30,6 @@ class Navbar extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     padding: 0px 40px;
-                    margin-bottom: 40px;
                     gap: 20px;
                 }
 
@@ -57,6 +56,11 @@ class Navbar extends HTMLElement {
                         width: 100%;
                         border-width: 2px 0px 2px 0px;
                         min-height: auto;
+                    }
+
+                    .logo {
+                        width: 68px;
+                        padding: 20px 0px;
                     }
 
                     .menu {

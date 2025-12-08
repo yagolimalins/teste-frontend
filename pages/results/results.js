@@ -226,7 +226,7 @@ class Results extends HTMLElement {
                 <my-breadcrumb slot="breadcrumb" paths='["Painel", "Pesquisa de Satisfação"]'></my-breadcrumb>
                 <h1 slot="title" class="title">Resultados da Pesquisa</h1>
 
-                <div slot="content" class="content">
+                <div slot="content-1" class="content">
 
                     <div class="head">
                         <div class="head-title">Nome da pesquisa</div>
