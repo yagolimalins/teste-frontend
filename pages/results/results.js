@@ -91,6 +91,100 @@ class Results extends HTMLElement {
                     width: 100%;
                 }
 
+                .comments-section {
+                    margin-top: 20px;
+                    background: white;
+                    border-radius: 15px;
+                    padding: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .comments-section h2 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: var(--darker-font);
+                    margin-bottom: 16px;
+                }
+
+                .comments-number {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: var(--lighter-font);
+                }
+
+                .comments-table-wrapper {
+                    border-radius: 12px;
+                    overflow: hidden;
+                    border: 1px solid var(--separator-color);
+                }
+
+                .comments-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .comments-table thead tr {
+                    background: var(--background-color);
+                }
+
+                .comments-table th {
+                    text-align: left;
+                    padding: 14px 20px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: var(--darker-font);
+                }
+
+                .comments-table td {
+                    padding: 18px 20px;
+                    font-size: 14px;
+                    color: var(--lighter-font);
+                    border-bottom: 1px solid var(--separator-color);
+                }
+
+                .comments-table tr:last-child td {
+                    border-bottom: none;
+                }
+
+                .pagination {
+                    display: flex;
+                    justify-content: center;
+                    gap: 8px;
+                    margin-top: 10px;
+                }
+
+                .page-btn {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 6px;
+                    border: 1px solid var(--separator-color);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    cursor: pointer;
+                    user-select: none;
+                }
+
+                .page-btn.active {
+                    background: var(--brand-color);
+                    color: white;
+                    border-color: var(--brand-color);
+                }
+
+                .page-btn.active:hover {
+                    background: var(--brand-color);
+                    color: white;
+                    border-color: var(--brand-color);
+                }
+
+                .page-btn:hover {
+                    color: var(--brand-color);
+                    border-color: var(--brand-color)
+                }
+
                 @media (max-width: 1000px) {
 
                     .left-group {
@@ -242,6 +336,55 @@ class Results extends HTMLElement {
                     </div>
 
                 </div>
+
+                <div slot="content-2" class="comments-section">
+                    <h2>Comentários <span class="comments-number">(32)</span></h2>
+
+                    <div class="comments-table-wrapper">
+                        <table class="comments-table">
+                            <thead>
+                                <tr>
+                                    <th>Comentário</th>
+                                    <th>Participante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Gostei bastante da dinâmica das atividades, mas acho que poderia ter mais tempo para networking.
+                                    </td>
+                                    <td>Ana Paula Rodrigues</td>
+                                </tr>
+
+                                <tr>
+                                    <td>O áudio do auditório principal estava muito baixo no início, mas depois ajustaram e ficou ótimo.</td>
+                                    <td>Carlos Henrique Farias</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Foi tudo muito organizado e objetivo. Só senti falta de opções vegetarianas no coffee break.</td>
+                                    <td>Juliana Martins Nogueira</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Achei a palestra final sensacional! Levarei vários insights para aplicar no meu trabalho.</td>
+                                    <td>Rafael Dutra Lima</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <div class="page-btn active">1</div>
+                        <div class="page-btn">2</div>
+                        <div class="page-btn">…</div>
+                        <div class="page-btn">9</div>
+                        <div class="page-btn">10</div>
+                        <div class="page-btn">></div>
+                    </div>
+                </div>
+
+                <my-button slot="footer-action-left" label="Voltar" variant="secondary"></my-button>
             </my-template>
         `;
     }

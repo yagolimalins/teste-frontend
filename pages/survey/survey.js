@@ -411,7 +411,9 @@ class Survey extends HTMLElement {
                 </div>
 
                 ${!this.showQuestionInput
-                    ? `<my-button slot="footer-action" label="Enviar pesquisa" variant="primary"></my-button>`
+                    ? /*html*/`
+                        <div slot="footer-action-left"></div>
+                        <my-button slot="footer-action-right" label="Enviar pesquisa" variant="primary"></my-button>`
                     : ''
                 }
             </my-template>

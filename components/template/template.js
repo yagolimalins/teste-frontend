@@ -50,7 +50,7 @@ class Template extends HTMLElement {
 
                 .footer-action-row {
                     display: flex;
-                    justify-content: flex-end;
+                    justify-content: space-between;
                 }
 
                 footer {
@@ -118,8 +118,11 @@ class Template extends HTMLElement {
 
                         <slot name="content"></slot>
 
+                        <slot name="content-2"></slot>
+
                         <div class="footer-action-row">
-                            <slot name="footer-action"></slot>
+                            <slot name="footer-action-left"></slot>
+                            <slot name="footer-action-right"></slot>
                         </div>
                     </div>
 
