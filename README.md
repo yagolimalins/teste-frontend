@@ -5,11 +5,19 @@ O objetivo foi construir uma aplicação simples utilizando **HTML, CSS e JavaSc
 
 ---
 
+## 🎥 Apresentação do Projeto
+
+O vídeo abaixo demonstra a estrutura, organização e funcionalidades principais da aplicação — incluindo a abordagem com Web Components, o template base e o funcionamento das páginas:
+
+▶️ **https://youtu.be/iZJm2yUdPMw**
+
+---
+
 ## 🚀 Tecnologias utilizadas
 
-- **HTML5**  
-- **CSS3 (reset + global styles)**  
-- **JavaScript Vanilla**  
+- **HTML5**
+- **CSS3 (reset + global styles)**
+- **JavaScript Vanilla**
 - **Web Components (Custom Elements + Shadow DOM)**  
 
 Nenhum framework ou biblioteca externa foi utilizada — somente tecnologias nativas.
@@ -108,3 +116,4 @@ Para uma experiência mais fluida durante o desenvolvimento:
 Este projeto foi desenvolvido exclusivamente para fins de avaliação no processo seletivo.
 
 ---
+
