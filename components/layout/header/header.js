@@ -68,7 +68,7 @@ class Header extends HTMLElement {
             <header class="header">
                 <a class="team">LIGA ACADÊMICA DE CLÍNICA MÉDICA</a>
                 <div class="menu">
-                    <div class="help">Ajuda<i class="fa fa-question-circle-o"></i></div>
+                    <div class="help">Ajuda</div>
                     <img class="avatar" src="assets/images/avatar.webp" alt="">
                     <div class="profile">
                         <img src="" alt="">

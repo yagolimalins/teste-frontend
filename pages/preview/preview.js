@@ -177,15 +177,6 @@ class Preview extends HTMLElement {
                     display: flex;
                     justify-content: flex-end;
                 }
-
-                @media (max-width: 640px) {
-                    .topbar .inner { padding: 10px; }
-                    .brand-link { font-size: 12px; }
-                    .event-btn { padding: 8px 10px; font-size: 13px; }
-                    .container { margin: 12px auto 0; }
-                    .card,
-                    .questions { padding: 16px; }
-                }
             </style>
         `;
     }

@@ -9,6 +9,12 @@ class Navbar extends HTMLElement {
             <link rel="stylesheet" href="styles/global.css"/>
 
             <style>
+                .hamburger {
+                    display: none;
+                    font-size: 25px;
+                    cursor: pointer;
+                }
+
                 .navbar {
                     display: flex;
                     flex-direction: column;
@@ -24,6 +30,13 @@ class Navbar extends HTMLElement {
                 .logo {
                     padding: 25px 0px;
                     width: 90px;
+                }
+
+                .avatar {
+                    width: 30px;
+                    display: none;
+                    border-radius: 100px;
+                    padding
                 }
 
                 .menu {
@@ -51,8 +64,19 @@ class Navbar extends HTMLElement {
                     white-space: nowrap;
                 }
 
+                .display {
+                    display: block;
+                }
+
                 @media (max-width: 1000px) {
+                    .hamburger {
+                        display: block;
+                        margin-left: 20px;
+                    }
+
                     .navbar {
+                        flex-direction: row;
+                        justify-content: space-between;
                         width: 100%;
                         border-width: 2px 0px 2px 0px;
                         min-height: auto;
@@ -66,13 +90,20 @@ class Navbar extends HTMLElement {
                     .menu {
                         display: none;
                     }
+
+                    .avatar {
+                        display: block;
+                        margin-right: 20px;
+                    }
                 }
             </style>
 
             <nav class="navbar">
+                <div class="hamburger">☰</div>
                 <div>
                     <img class="logo" src="assets/logo/doity.png" alt="">
                 </div>
+                <img class="avatar" src="assets/images/avatar.webp" alt="">
                 <ul class="menu">
                     <li>
                         <a href="#" class="link">
