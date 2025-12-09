@@ -21,15 +21,20 @@ class Navbar extends HTMLElement {
                     align-items: center;
                     min-height: 100%;
                     background-color: white;
-                    border-style: solid;
-                    border-width: 0px 2px 0px 0px;
-                    border-color: var(--border-color);
                     gap: 38px;
                 }
 
                 .logo {
                     padding: 25px 0px;
                     width: 90px;
+                }
+
+                .menu {
+                    display: flex;
+                    width: 100%;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-around;
                 }
 
                 .avatar {
@@ -39,7 +44,7 @@ class Navbar extends HTMLElement {
                     padding
                 }
 
-                .menu {
+                .links {
                     display: flex;
                     flex-direction: column;
                     padding: 0px 40px;
@@ -64,19 +69,34 @@ class Navbar extends HTMLElement {
                     white-space: nowrap;
                 }
 
-                .display {
-                    display: block;
+                .navbar.open {
+                    position: fixed;
+                    inset: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: white;
+                    z-index: 9999;
+                    justify-content: flex-start;
+                }
+
+                .navbar.open .links {
+                    display: flex;
                 }
 
                 @media (max-width: 1000px) {
+                    .menu {
+                        justify-content: space-between;
+                        border-style: solid;
+                        border-width: 0px 0px 2px 0px;
+                        border-color: var(--border-color)
+                    }
+
                     .hamburger {
                         display: block;
                         margin-left: 20px;
                     }
 
                     .navbar {
-                        flex-direction: row;
-                        justify-content: space-between;
                         width: 100%;
                         border-width: 2px 0px 2px 0px;
                         min-height: auto;
@@ -87,7 +107,7 @@ class Navbar extends HTMLElement {
                         padding: 20px 0px;
                     }
 
-                    .menu {
+                    .links {
                         display: none;
                     }
 
@@ -99,12 +119,14 @@ class Navbar extends HTMLElement {
             </style>
 
             <nav class="navbar">
-                <div class="hamburger">☰</div>
-                <div>
-                    <img class="logo" src="assets/logo/doity.png" alt="">
+                <div class="menu">
+                    <div class="hamburger">☰</div>
+                    <div>
+                        <img class="logo" src="assets/logo/doity.png" alt="">
+                    </div>
+                    <img class="avatar" src="assets/images/avatar.webp" alt="">
                 </div>
-                <img class="avatar" src="assets/images/avatar.webp" alt="">
-                <ul class="menu">
+                <ul class="links">
                     <li>
                         <a href="#" class="link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -277,6 +299,36 @@ class Navbar extends HTMLElement {
                 </ul>
             </nav>
         `;
+
+        const navbar = this.shadowRoot.querySelector('.navbar');
+        const hamburger = this.shadowRoot.querySelector('.hamburger');
+        const links = this.shadowRoot.querySelector('.links');
+        const allLinks = this.shadowRoot.querySelectorAll('.link');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navbar.classList.toggle('open');
+            links.style.display = isOpen ? 'flex' : 'none';
+        });
+
+        allLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1000) {
+                    navbar.classList.remove('open');
+                    links.style.display = 'none';
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1000) {
+                navbar.classList.remove('open');
+                links.style.display = 'flex';
+            } else {
+                if (!navbar.classList.contains('open')) {
+                    links.style.display = 'none';
+                }
+            }
+        });
     }
 }
 
