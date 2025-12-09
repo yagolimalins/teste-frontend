@@ -165,9 +165,13 @@ class Form extends HTMLElement {
                     justify-content: space-between;
                 }
 
-                @media (max-width: 550px) {
+                @media (max-width: 1000px) {
                     .period-inputs {
                         flex-direction: column;
+                    }
+
+                    .content {
+                        padding: 20px;
                     }
                 }
             </style>

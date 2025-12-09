@@ -207,9 +207,24 @@ class Results extends HTMLElement {
                         align-items: flex-start;
                     }
 
+                    .cards-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                        gap: 25px;
+                        width: 100%;
+                    }
+
                     .actions {
                         width: 100%;
                         justify-content: flex-start;
+                    }
+
+                    .content {
+                        padding: 20px;
+                    }
+
+                    .comments-section {
+                        padding: 20px;
                     }
                 }
             </style>

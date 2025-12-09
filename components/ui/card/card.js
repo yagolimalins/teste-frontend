@@ -56,7 +56,6 @@ class Card extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
-                    font-family: Arial, sans-serif;
                     min-height: 230px;
                 }
 
@@ -143,6 +142,14 @@ class Card extends HTMLElement {
 
                     .row-label {
                         justify-content: flex-end;
+                    }
+
+                    .card {
+                        padding: 20px;
+                    }
+
+                    .results-grid {
+                        column-gap: 10px;
                     }
                 }
             </style>
